@@ -1,21 +1,21 @@
 import React from 'react';
-import UserPhost from './teste/UserPhost';
-import Token from './teste/Token';
-import PhotoPost from './teste/PhotoPost';
-import PhotoGet from './teste/PhotoGet';
+import './App.css';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
 
 const App = () => {
   return (
-    <div>
-      <h1>cadastrar</h1>
-      <UserPhost />
-      <h1>Token</h1>
-      <Token />
-      <h1>PhotoPost</h1>
-      <PhotoPost />
-      <h1>Photo Get</h1>
-      <PhotoGet />
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 };
 
