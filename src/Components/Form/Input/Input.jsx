@@ -2,7 +2,6 @@ import React from 'react';
 import style from './Input.module.css';
 
 const Input = ({ value, name, label, type, handleChange, error, onBlur }) => {
-  console.log(onBlur);
   return (
     <div className={style.wrapper}>
       <label className={label} htmlFor={name}>
