@@ -6,10 +6,12 @@ import useForm from '../../../Hook/useForm';
 import { TOKEN_POST, GET_USER } from '../../../api';
 import { UserContext } from '../../../UserContext';
 
+
 const LoginForm = () => {
   const username = useForm();
   const password = useForm();
-  const { userLogin, data, getUser } = React.useContext(UserContext);
+  const { userLogin, data, getUser, error, loading } =
+    React.useContext(UserContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,7 +25,12 @@ const LoginForm = () => {
       <form onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
-        <Button>Enviar</Button>
+        {loading ? (
+          <Button disabled>Carregando...</Button>
+        ) : (
+          <Button>Enviar</Button>
+        )}
+        {error && <p>{error}</p>}
       </form>
       <Link to="/login/criar">Cadastro</Link>
     </section>
