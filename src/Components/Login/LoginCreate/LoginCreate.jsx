@@ -6,13 +6,15 @@ import Button from '../../Form/Button/Button';
 import { POST_USER } from '../../../api';
 import { UserContext } from '../../../UserContext';
 import Error from '../../Helper/Error';
+import useFetch from '../../../Hook/useFetch';
 
 const LoginCreate = () => {
   const username = useForm();
   const email = useForm('email');
   const password = useForm();
 
-  const { userLogin, loading, error } = React.useContext(UserContext);
+  const { userLogin } = React.useContext(UserContext);
+  const { request, loading, error } = useFetch();
 
   const { url, options } = POST_USER({
     username: username.value,
@@ -22,9 +24,7 @@ const LoginCreate = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const response = await fetch(url, options);
-    const json = await response.json();
-
+    const { response } = await request(url, options);
     if (response.ok) userLogin(username.value, password.value);
   }
   return (
