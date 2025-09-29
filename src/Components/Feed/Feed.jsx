@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FeedModal from './FeedModal/FeedModal';
 import FeedPhotos from './FeedPhotos/FeedPhotos';
 const Feed = () => {
+  const [modal, setModal] = useState(null);
+
   return (
     <section>
-      <FeedModal />
-      <FeedPhotos />
+      {modal && <FeedModal photo={modal} setModal={setModal} />}
+
+      <FeedPhotos setModal={setModal} />
     </section>
   );
 };
