@@ -11,8 +11,10 @@ const FeedPhotos = ({ setModal }) => {
 
   React.useEffect(() => {
     async function fetchPhotos() {
-      const { url, options } = GET_PHOTOS({ page: 1, total: 1, user: 170 });
-      request(url, options);
+      const { url, options } = GET_PHOTOS({ page: 1, total: 1, user: 1923 });
+      const { json, response } = request(url, options);
+      console.log(json);
+      console.log(response);
     }
 
     fetchPhotos();
