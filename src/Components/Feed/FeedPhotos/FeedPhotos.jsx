@@ -11,8 +11,8 @@ const FeedPhotos = ({ setModal }) => {
 
   React.useEffect(() => {
     async function fetchPhotos() {
-      const { url, options } = GET_PHOTOS({ page: 1, total: 6, user: 0 });
-      const { response, json } = await request(url, options);
+      const { url, options } = GET_PHOTOS({ page: 1, total: 1, user: 170 });
+      request(url, options);
     }
 
     fetchPhotos();
@@ -20,7 +20,7 @@ const FeedPhotos = ({ setModal }) => {
 
   if (error) return <Error erro={error} />;
   if (loading) return <Loading />;
-  if (data)
+  if (Array.isArray(data))
     return (
       <ul className={`${Style.feed} animeLeft`}>
         {data.map((photo) => {

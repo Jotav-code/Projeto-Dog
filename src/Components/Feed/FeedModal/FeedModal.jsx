@@ -1,5 +1,5 @@
 import React from 'react';
-import useFecth from '../../../Hook/useFetch';
+import useFetch from '../../../Hook/useFetch';
 import Style from './FeedModal.module.css';
 import { GET_PHOTO } from '../../../api';
 import Error from '../../Helper/Error';
@@ -7,7 +7,7 @@ import Loading from '../../Helper/Loading';
 import PhotoContent from '../../Photo/PhotoContent';
 
 const FeedModal = ({ photo, setModal }) => {
-  const { data, loading, error, request } = useFecth();
+  const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
     const { url, options } = GET_PHOTO(photo.id);
