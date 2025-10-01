@@ -6,7 +6,7 @@ import Postar from '../../../Assets/adicionar.svg?react';
 import Estatisticas from '../../../Assets/estatisticas.svg?react';
 import Sair from '../../../Assets/sair.svg?react';
 import Style from './UserHeaderNav.module.css';
-import userMedia from '../../../Hook/UserMedia';
+import userMedia from '../../../Hook/userMedia';
 const UserHeaderNav = () => {
   const { userLogout } = React.useContext(UserContext);
 
