@@ -15,14 +15,14 @@
   background-image: linear-gradient(90deg, #eee 0px, #fff 50%, #eee 100%);
   background-color: #eee;
   background-size: 200%;
-  animation: skeleton 1.5s infinite linear;
+  animation: skeleton 1s infinite linear;
 }
 
 @keyframes skeleton{
   from{
-    background-position: 0;
+    background-position: 0px;
   }
-  tp{
+  to{
     background-position: -200% ;
   }
 }
