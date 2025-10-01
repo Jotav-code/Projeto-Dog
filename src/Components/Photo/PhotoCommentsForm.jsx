@@ -6,13 +6,14 @@ import Error from '../../Components/Helper/Error';
 import Style from './PhotoCommentsForm.module.css';
 
 const PhotoCommentsForm = ({ id, setComments }) => {
-  const [coment, setComent] = React.useState('');
-  const { request, error } = useFetch();
+  const [comment, setComent] = React.useState('');
+  const { request, loading, error } = useFetch();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const { url, options } = COMMENT_POST(id, { coment });
-    const { response, json } = request(url, options);
+    const { url, options } = COMMENT_POST(id, { comment });
+    const { response, json } = await request(url, options);
+    console.log(response);
     if (response.ok) {
       setComent('');
       setComments((comente) => [...comente, json]);
@@ -22,10 +23,10 @@ const PhotoCommentsForm = ({ id, setComments }) => {
     <form className={Style.form} onSubmit={handleSubmit}>
       <textarea
         className={Style.textarea}
-        id="comments"
-        name="comments"
+        id="comment"
+        name="comment"
         placeholder="Comente..."
-        value={coment}
+        value={comment}
         onChange={({ target }) => setComent(target.value)}
       />
       <button className={Style.button}>
