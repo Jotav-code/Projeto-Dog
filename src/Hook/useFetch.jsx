@@ -27,7 +27,7 @@ const useFetch = () => {
         json,
       };
     }
-  });
+  }, []);
   return { data, loading, error, request };
 };
 

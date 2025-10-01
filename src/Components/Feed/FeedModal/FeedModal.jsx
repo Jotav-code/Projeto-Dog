@@ -12,7 +12,7 @@ const FeedModal = ({ photo, setModal }) => {
   React.useEffect(() => {
     const { url, options } = GET_PHOTO(photo.id);
     request(url, options);
-  }, [photo, request]);
+  }, [photo]);
 
   function handleOutsideCLick(event) {
     if (event.target === event.currentTarget) return setModal(null);
