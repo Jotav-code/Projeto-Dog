@@ -5,16 +5,20 @@ import Style from './PhotoComments.module.css';
 
 const PhotoComments = (props) => {
   const [comments, setComments] = React.useState(() => props.comments);
-  console.log(comments);
+
   const commmentsSection = React.useRef();
   const { login } = React.useContext(UserContext);
 
   React.useEffect(() => {
     commmentsSection.current.scrollTop = commmentsSection.current.scrollHeight;
   }, [comments]);
+
   return (
     <>
-      <ul ref={commmentsSection} className={StylePropertyMap.comments}>
+      <ul
+        ref={commmentsSection}
+        className={`${Style.comments} ${props.single ? Style.single : ''}`}
+      >
         {comments.map((comment) => {
           return (
             <li key={comment.comment_ID}>
@@ -24,7 +28,13 @@ const PhotoComments = (props) => {
           );
         })}
       </ul>
-      {login && <PhotoCommentsForm id={props.id} setComments={setComments} />}
+      {login && (
+        <PhotoCommentsForm
+          id={props.id}
+          single={props.single}
+          setComments={setComments}
+        />
+      )}
     </>
   );
 };
