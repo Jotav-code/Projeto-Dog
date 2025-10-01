@@ -5,7 +5,7 @@ import LoginForm from './LoginForm/LoginForm';
 import LoginCreate from './LoginCreate/LoginCreate';
 import LoginPasswordLost from './LoginPasswordLost/LoginPasswordLost';
 import LoginPasswordReset from './LoginPasswordReset/LoginPasswordReset';
-import { UserContext } from '../../userContext';
+import { UserContext } from '../../UserContext';
 
 const Login = () => {
   const { login } = React.useContext(UserContext);
